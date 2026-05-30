@@ -1,0 +1,11 @@
+# Import as Blueprint on Render, or copy build/start commands into the dashboard.
+# Use repo root (leave Root Directory blank), not apps/api alone.
+services:
+  - type: web
+    name: streamverse-api
+    runtime: node
+    buildCommand: npm install --include=dev && npm run build:api
+    startCommand: cd apps/api && npx prisma migrate deploy && npm run start
+    envVars:
+      - key: NODE_VERSION
+        value: "20.18.0"
