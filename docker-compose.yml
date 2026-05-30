@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: streamverse-postgres
+    environment:
+      POSTGRES_USER: streamverse
+      POSTGRES_PASSWORD: streamverse
+      POSTGRES_DB: streamverse
+    ports:
+      - "5432:5432"
+    volumes:
+      - streamverse-postgres:/var/lib/postgresql/data
+
+volumes:
+  streamverse-postgres:

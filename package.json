@@ -1,0 +1,25 @@
+{
+  "name": "streamverse",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Netflix-like streaming MVP with a Next.js frontend and NestJS backend.",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace apps/api",
+    "dev:api": "npm run dev --workspace apps/api",
+    "dev:web": "npm run dev --workspace apps/web",
+    "build": "npm run build --workspaces",
+    "lint": "npm run lint --workspaces",
+    "test": "npm run test --workspaces",
+    "prisma:generate": "npm run prisma:generate --workspace apps/api",
+    "prisma:migrate": "npm run prisma:migrate --workspace apps/api",
+    "prisma:seed": "npm run prisma:seed --workspace apps/api"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
