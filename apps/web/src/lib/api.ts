@@ -127,6 +127,21 @@ export const api = {
         body: JSON.stringify(payload)
       }
     ),
+  adminImportProviderTemplate: (
+    token: string,
+    payload: {
+      query?: string;
+      limit?: number;
+    }
+  ) =>
+    request<{ ok: true; imported: number; skipped: number; titles: Title[] }>(
+      '/admin/import/provider-template',
+      {
+        token,
+        method: 'POST',
+        body: JSON.stringify(payload)
+      }
+    ),
   adminCreateTitle: (
     token: string,
     payload: {
