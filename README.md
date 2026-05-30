@@ -48,7 +48,7 @@ The frontend runs on `http://localhost:3000` and the API runs on `http://localho
 
 ## TMDb import
 
-There is no public Netflix API for third-party playback. For recognizable catalog content, StreamVerse supports TMDb metadata import plus YouTube trailer playback.
+There is no public Netflix API for third-party playback. For recognizable catalog content, StreamVerse supports TMDb metadata import plus YouTube trailer playback and some contents from other application streaming, try to explore some movies and try to stream.
 
 1. Create a TMDb account and generate an API Read Access Token.
 2. Add it to [apps/api/.env](../apps/api/.env):
@@ -79,3 +79,5 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for GitHub, Vercel (frontend), and hosting 
 
 - The catalog uses sample media and externally hosted poster/backdrop URLs for demo purposes.
 - The AI features are implemented as deterministic recommendation and semantic-style scoring services. They are shaped so real embeddings or an LLM provider can be added later without changing the frontend contract.
+
+Note: This application uses a third-party server that may become unavailable or be taken down due to legal or policy reasons. Before running or using this application, ensure that doing so complies with the laws, regulations, and policies applicable in your country or region. This project is provided solely for educational and research purposes. Users are responsible for ensuring their use of the application is lawful and authorized.
