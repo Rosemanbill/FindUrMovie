@@ -11,7 +11,7 @@ async function bootstrap() {
   const frontendOrigin = config.get<string>('FRONTEND_ORIGIN') ?? 'http://localhost:3000';
   const allowedOrigins = frontendOrigin
     .split(',')
-    .map((origin) => origin.trim())
+    .map((origin) => origin.trim().replace(/\/+$/, ''))
     .filter(Boolean);
 
   app.use(helmet());
