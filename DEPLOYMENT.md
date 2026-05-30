@@ -51,10 +51,17 @@ Do **not** commit `.env` files — they are in `.gitignore`.
 
 1. [dashboard.render.com](https://dashboard.render.com) → **New** → **Web Service** → connect your GitHub repo.
 2. Settings:
-   - **Root Directory:** `apps/api`
-   - **Runtime:** Node
-   - **Build Command:** `npm install && npm run prisma:generate && npm run build`
-   - **Start Command:** `npx prisma migrate deploy && node dist/main.js`
+   - **Root Directory:** leave **empty** (repo root — important for npm workspaces)
+   - **Runtime:** Node — `NODE_VERSION` = `20.18.0`
+   - **Build Command:** `npm install --include=dev && npm run build:api`
+   - **Start Command:** `cd apps/api && npx prisma migrate deploy && npm run start`
+
+   **If you see `Cannot find module ... dist/main.js`:** the **Build** step did not produce `apps/api/dist/`. Open the **Build** log (not the runtime log) and look for `Build OK: dist/main.js`. If it is missing:
+   - Root Directory must be empty, not `apps/api` (workspace installs break easily in the subfolder).
+   - Build Command must include `npm run build:api`.
+   - Do not use a custom Start Command of `node dist/main.js` unless you `cd apps/api` first.
+
+   You can import [`render.yaml`](./render.yaml) as a Blueprint or paste the same commands manually.
 3. **Environment variables:**
 
    | Key | Value |
