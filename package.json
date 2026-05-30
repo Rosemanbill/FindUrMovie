@@ -17,7 +17,8 @@
     "prisma:generate": "npm run prisma:generate --workspace apps/api",
     "prisma:migrate": "npm run prisma:migrate --workspace apps/api",
     "prisma:seed": "npm run prisma:seed --workspace apps/api",
-    "build:api": "npm run build --workspace @streamverse/api"
+    "build:api": "npm run build --workspace @streamverse/api",
+    "build:web": "npm run build --workspace @streamverse/web"
   },
   "engines": {
     "node": ">=20.0.0",

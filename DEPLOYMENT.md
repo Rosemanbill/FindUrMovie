@@ -90,19 +90,27 @@ npm run prisma:seed --workspace apps/api
 ## 3. Deploy frontend on Vercel
 
 1. [vercel.com/new](https://vercel.com/new) → **Import** your GitHub repository.
-2. **Root Directory:** `apps/web` (important).
-3. Framework should detect **Next.js** (uses `apps/web/vercel.json`).
-4. **Environment variable:**
+2. **Root Directory:** `apps/web` (required — the Next.js app is not at the repo root).
+3. **Settings → General →** enable **Include source files outside of the Root Directory** (needed for npm workspaces).
+4. **Output Directory:** leave **empty** (do not set `.next`, `out`, or `apps/web` — that causes `404 NOT_FOUND` on `/`).
+5. Framework: **Next.js** (uses `apps/web/vercel.json`).
+6. **Environment variable:**
 
    | Key | Value |
    |-----|--------|
    | `NEXT_PUBLIC_API_URL` | `https://YOUR-API.onrender.com/api/v1` |
 
-5. **Deploy**.
+7. **Deploy** → open **Deployments** and confirm status is **Ready** (not Error).
 
-6. Copy your Vercel URL (e.g. `https://streamverse.vercel.app`).
+8. Copy your Vercel URL (e.g. `https://streamverse.vercel.app`).
 
-7. Update the API’s `FRONTEND_ORIGIN` on Render to that exact URL (no trailing slash), then redeploy the API so CORS allows the frontend.
+9. Update the API’s `FRONTEND_ORIGIN` on Render to that exact URL (no trailing slash), then redeploy the API so CORS allows the frontend.
+
+**If `https://your-app.vercel.app/` returns `404 NOT_FOUND` (platform error, not your app UI):**
+
+- Root Directory is wrong (must be `apps/web`), or **Output Directory** was set manually — clear it and redeploy.
+- Latest deployment is not **Ready** — fix the build, then redeploy with **Clear build cache**.
+- Alternatively leave Root Directory empty and use the repo-root [`vercel.json`](./vercel.json) (`builds` → `apps/web/package.json`).
 
 ---
 
